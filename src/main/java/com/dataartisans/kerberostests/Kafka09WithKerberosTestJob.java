@@ -37,6 +37,7 @@ public class Kafka09WithKerberosTestJob {
 		Properties kafkaProps = new Properties();
 		kafkaProps.setProperty("group.id", UUID.randomUUID().toString());
 		kafkaProps.setProperty("bootstrap.servers", param.getRequired("broker"));
+		kafkaProps.setProperty("security.protocol", "SASL_PLAINTEXT");
 		kafkaProps.setProperty("sasl.kerberos.service.name", "kafka"); // use kerberos
 
 		env.addSource(new SourceFunction<String>() {
